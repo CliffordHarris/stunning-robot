@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import Chart from 'chart.js';
+import { ApiServiceService } from "src/app/service/api-service.service";
 
 @Component({
   selector: "app-dashboard",
@@ -14,10 +15,17 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
-
-  constructor() {}
+  dogImg: any;
+  constructor(private apiService: ApiServiceService) {}
 
   ngOnInit() {
+    // fetch("https://dog.ceo/api/breed/pomeranian/images/random")
+    // .then(x => x.json())
+    // .then(x => {
+    //   console.log(x);
+    //   this.dogImg = x["message"];
+    // });
+    this.apiService.getItems();
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {
       maintainAspectRatio: false,
       legend: {
